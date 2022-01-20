@@ -91,8 +91,7 @@ function golfcode() {
 
       bufferView[i / 2] = c2 << 8 | c1;
     }
-
-    output.value = "exec(bytes('" + String.fromCharCode.apply(String, bufferView) + "','u16')[2:])";
+    output.value = "eval(''+new Buffer('" + String.fromCharCode.apply(String, bufferView) + "','ucs2'))";
     displayStats();
   } catch (error) {
     output.value = "An error occured. Refresh the page or check the logs.";
